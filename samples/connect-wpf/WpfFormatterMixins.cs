@@ -1,7 +1,10 @@
 ﻿using Microsoft.DotNet.Interactive.CSharp;
 using Microsoft.DotNet.Interactive.Formatting;
+using Microsoft.DotNet.Interactive.PackageManagement;
 using System;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -16,6 +19,19 @@ namespace WpfConnect
         {
             UseSolidColorBrushFormatter();
             UseFrameworkElementFormatter();
+            return kernel;
+        }
+
+        public static CSharpKernel UseNugetDirective(this CSharpKernel kernel, bool forceRestore = false)
+        {
+            kernel.UseNugetDirective((k, resolvedPackageReference) =>
+            {
+                
+                k.AddAssemblyReferences(resolvedPackageReference
+                    .SelectMany(r => r.AssemblyPaths));
+                return Task.CompletedTask;
+            }, forceRestore);
+
             return kernel;
         }
 

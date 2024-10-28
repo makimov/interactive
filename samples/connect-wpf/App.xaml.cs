@@ -7,6 +7,7 @@ using Microsoft.DotNet.Interactive;
 using Microsoft.DotNet.Interactive.Commands;
 using Microsoft.DotNet.Interactive.Connection;
 using Microsoft.DotNet.Interactive.CSharp;
+using Microsoft.DotNet.Interactive.NamedPipeConnector;
 
 namespace WpfConnect
 {
