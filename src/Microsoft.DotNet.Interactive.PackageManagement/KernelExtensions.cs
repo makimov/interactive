@@ -162,7 +162,7 @@ public static class KernelExtensions
 
     private static bool EndsInDirectorySeparator(string path)
     {
-        return path.Length > 0 && path.EndsWith(Path.DirectorySeparatorChar);
+        return path.Length > 0 && path.EndsWith(Path.DirectorySeparatorChar.ToString());
     }
     
     private static async Task Restore<T>(KernelInvocationContext context,
